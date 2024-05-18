@@ -56,6 +56,7 @@ public class EnemyMoveController : ISubscribable
         {
             _enemy.Move(_player.transform.position);
         }
+        else ChangeActionToWayMovementDelegate.Invoke();
     }
 
     private void ChangeMoveAction(bool isMoveOnWay)

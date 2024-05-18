@@ -6,16 +6,12 @@ using UnityEngine;
 public class Player : MonoBehaviour, IService
 {
     [SerializeField] private float speed;
-
+    [SerializeField] private GameObject _view;
 
     private Rigidbody2D _rb;
     private Vector2 _moveVelocity;
     public bool _isVisible = true;
-
-    public void HelloWorld()
-    {
-        Debug.Log("HelloWorld");
-    }
+    
 
     private void Awake() {
         _rb = GetComponent<Rigidbody2D>();
@@ -40,7 +36,7 @@ public class Player : MonoBehaviour, IService
 
     public void ChangeVisible() {
         _isVisible = !_isVisible;
-        _rb.gameObject.SetActive(_isVisible);
+        _view.SetActive(_isVisible);
     }
 
     private void Move() {

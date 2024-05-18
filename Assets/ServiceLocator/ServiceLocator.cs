@@ -7,7 +7,7 @@ public class ServiceLocator : MonoBehaviour
 {
     public static ServiceLocator Instance { get; private set; }
 
-    private Dictionary<Type, IService> _services;
+    private Dictionary<Type, IService> _services = new Dictionary<Type, IService>();
 
     private void Awake()
     {

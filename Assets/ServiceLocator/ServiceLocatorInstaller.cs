@@ -9,6 +9,9 @@ public class ServiceLocatorInstaller : MonoBehaviour
 
     [SerializeField] private ProgressBar _progressBar;
 
+    [SerializeField] private AudioService _audioService;
+    [SerializeField] private AudioData _audioData;
+
     private void Awake()
     {
         Bind();
@@ -19,6 +22,7 @@ public class ServiceLocatorInstaller : MonoBehaviour
         BindInventory();
         BindPlayer();
         BindProgressBar();
+        BindAudio();
         BindSubscribeService();
     }
 
@@ -41,5 +45,10 @@ public class ServiceLocatorInstaller : MonoBehaviour
     private void BindSubscribeService()
     {
         ServiceLocator.Instance.Register(_subscribeService);
+    }
+
+    private void BindAudio()
+    {
+        AudioPlayer.Instance.Init(_audioData.AudioConfigs);
     }
 }

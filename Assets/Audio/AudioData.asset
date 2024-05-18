@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7d65359f1d48541bf6d58cb34e1ade, type: 3}
+  m_Name: AudioData
+  m_EditorClassIdentifier: 
+  _audioConfigs:
+  - _index: Caught
+    _clip: {fileID: 8300000, guid: c0e152f272171a142832f8292ff934f8, type: 3}
+    _volume: 0.5
+  - _index: Close
+    _clip: {fileID: 8300000, guid: 0ffe7578ca2c7ea4d93fa5d85f58aea4, type: 3}
+    _volume: 0.5
+  - _index: Detection
+    _clip: {fileID: 8300000, guid: b66b1d192410e5643b0fd8d36dfbd4ad, type: 3}
+    _volume: 0.5
+  - _index: Interaction
+    _clip: {fileID: 8300000, guid: 41f50e71aa394af478ee4e4ab34f3afa, type: 3}
+    _volume: 0.5
+  - _index: Losing
+    _clip: {fileID: 8300000, guid: 195e98d7251357e4b860a2606327a5b7, type: 3}
+    _volume: 0.5
+  - _index: Open
+    _clip: {fileID: 8300000, guid: 34191d889b0763b409ee21bc9fc59b7e, type: 3}
+    _volume: 0
+  - _index: PickingUp
+    _clip: {fileID: 8300000, guid: 81f1f64c30342044a894563dc1135a76, type: 3}
+    _volume: 0.5
+  - _index: Walk
+    _clip: {fileID: 8300000, guid: 43ad404af3989e34b87c5abf70cdad8e, type: 3}
+    _volume: 0.5

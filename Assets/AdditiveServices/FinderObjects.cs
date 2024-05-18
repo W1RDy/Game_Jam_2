@@ -12,6 +12,12 @@ public static class FinderObjects
         return null;
     }
 
+    public static IItem FindItemByCircle(float radius, Vector2 circlePosition)
+    {
+        var result = FindByCircle<IItem>(radius, circlePosition, 0);
+        if (result != null) return result[0];
+        return null;
+    }
 
     private static List<T> FindByCircle<T>(float radius, Vector2 circlePosition, int layer)
     {

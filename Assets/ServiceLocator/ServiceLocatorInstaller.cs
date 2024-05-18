@@ -5,7 +5,6 @@ using UnityEngine;
 public class ServiceLocatorInstaller : MonoBehaviour
 {
     [SerializeField] private Player _player;
-
     [SerializeField] private SubscribeService _subscribeService;
 
     private void Awake()
@@ -15,6 +14,7 @@ public class ServiceLocatorInstaller : MonoBehaviour
 
     private void Bind()
     {
+        BindInventory();
         BindPlayer();
         BindService1();
         BindSubscribeService();
@@ -28,6 +28,12 @@ public class ServiceLocatorInstaller : MonoBehaviour
     private void BindService1()
     {
 
+    }
+
+    private void BindInventory()
+    {
+        var inventory = new Inventory();
+        ServiceLocator.Instance.Register(inventory);
     }
 
     private void BindSubscribeService()

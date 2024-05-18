@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5915594717345953962}
-  - component: {fileID: 2246863336099640209}
+  - component: {fileID: 3204011944005856804}
   m_Layer: 5
   m_Name: ItemProgressBar
   m_TagString: Untagged
@@ -113,7 +113,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 11.3}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2246863336099640209
+--- !u!114 &3204011944005856804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,9 +122,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5728110411044471173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51eb8801e1800df438a86490828b48fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7195f8ac07d79c646bbb2094a5007058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _progressImage: {fileID: 6483953520183130511}
 --- !u!1 &6060781804231333410
 GameObject:
   m_ObjectHideFlags: 0

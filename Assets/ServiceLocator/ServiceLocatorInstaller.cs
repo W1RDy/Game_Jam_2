@@ -7,6 +7,8 @@ public class ServiceLocatorInstaller : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private SubscribeService _subscribeService;
 
+    [SerializeField] private ProgressBar _progressBar;
+
     private void Awake()
     {
         Bind();
@@ -16,7 +18,7 @@ public class ServiceLocatorInstaller : MonoBehaviour
     {
         BindInventory();
         BindPlayer();
-        BindService1();
+        BindProgressBar();
         BindSubscribeService();
     }
 
@@ -25,9 +27,9 @@ public class ServiceLocatorInstaller : MonoBehaviour
         ServiceLocator.Instance.Register(_player);
     }
 
-    private void BindService1()
+    private void BindProgressBar()
     {
-
+        ServiceLocator.Instance.Register(_progressBar);
     }
 
     private void BindInventory()

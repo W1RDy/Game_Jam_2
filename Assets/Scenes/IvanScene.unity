@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &32334155
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2558735614107763700, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558735614107763700, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558735614107763700, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.08973089
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558735614107763700, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558735614107763700, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558735614107763700, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558735614107763700, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558735614107763700, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558735614107763700, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558735614107763700, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2713459570020000031, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
+      propertyPath: m_Name
+      value: LevelItem (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca3d696424b94eb48a43f99b23ddbc6c, type: 3}
 --- !u!1 &89597160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,6 +1550,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1989861605}
     - target: {fileID: 1897283932683485505, guid: c68a00a27363f76429a773adc580abe2, type: 3}
+      propertyPath: _progressBar
+      value: 
+      objectReference: {fileID: 4742287716439502274}
+    - target: {fileID: 1897283932683485505, guid: c68a00a27363f76429a773adc580abe2, type: 3}
       propertyPath: _subscribeService
       value: 
       objectReference: {fileID: 995916318}
@@ -1868,11 +1929,23 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2246863336099640209, guid: e58a58bcda054284f8dd554267ecff44, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e58a58bcda054284f8dd554267ecff44, type: 3}
+--- !u!114 &4742287716439502274 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3204011944005856804, guid: e58a58bcda054284f8dd554267ecff44, type: 3}
+  m_PrefabInstance: {fileID: 4742287716439502273}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7195f8ac07d79c646bbb2094a5007058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6147759755856947060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2006,4 +2079,5 @@ SceneRoots:
   - {fileID: 995916317}
   - {fileID: 6147759755856947060}
   - {fileID: 7313318721736151948}
+  - {fileID: 32334155}
   - {fileID: 1335415963}

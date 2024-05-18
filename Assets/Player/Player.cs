@@ -14,10 +14,12 @@ public class Player : MonoBehaviour, IService
     public bool _isVisible = true;
 
     private Inventory _inventory;
+    private ItemInteractor _interactor;
     
     private void Awake() {
         _rb = GetComponent<Rigidbody2D>();
         _inventory = ServiceLocator.Instance.Get<Inventory>();
+        _interactor = new ItemInteractor();
     }
 
     private void Update() {
@@ -34,17 +36,11 @@ public class Player : MonoBehaviour, IService
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            IItem item;
-            if (_inventory.TryGetItem(out item))
-            {
-                item.Interact();
-            }
-            else
-            {
-                item = FinderObjects.FindItemByCircle(1, _rb.transform.position);
-
-                if (item != null) item.Interact();
-            }
+            _interactor.InteractWithItem(_inventory, _rb.transform.position);
+        }
+        else if (Input.GetKeyUp(KeyCode.E))
+        {
+            _interactor.StopInteractWithItem();
         }
     }
 

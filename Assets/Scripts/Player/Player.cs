@@ -8,8 +8,9 @@ public class Player : MonoBehaviour, IService
 
     private Rigidbody2D _rb;
     private Vector2 _moveVelocity;
-    private bool _isVisible = true;
+    
     private bool isTest;
+    public bool _isVisible = true;
 
     public void HelloWorld()
     {

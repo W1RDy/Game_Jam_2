@@ -11,6 +11,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _authors;
     private bool _isInMainMenu;
 
+    public void Start() {
+        _authors.SetActive(false);
+        _settings.SetActive(false);
+        _mainMenu.SetActive(true);
+    } 
+
     public void Update() {
         if (!_isInMainMenu && Input.GetKeyDown(KeyCode.Escape)) {
             _authors.SetActive(false);

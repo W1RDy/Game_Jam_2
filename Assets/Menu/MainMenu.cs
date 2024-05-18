@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     private bool _isInMainMenu;
 
     public void Start() {
+        print("start");
         _authors.SetActive(false);
         _settings.SetActive(false);
         _mainMenu.SetActive(true);
@@ -40,6 +41,12 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
     public void ChangeMenu() {
+        _isInMainMenu = false;
+    }
+
+    public void SettingOn() {
+        _settings.SetActive(true);
+        _mainMenu.SetActive(false);
         _isInMainMenu = false;
     }
 }

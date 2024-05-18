@@ -6,6 +6,8 @@ public class ServiceLocatorInstaller : MonoBehaviour
 {
     [SerializeField] private Player _player;
 
+    [SerializeField] private SubscribeService _subscribeService;
+
     private void Awake()
     {
         Bind();
@@ -15,6 +17,7 @@ public class ServiceLocatorInstaller : MonoBehaviour
     {
         BindPlayer();
         BindService1();
+        BindSubscribeService();
     }
 
     private void BindPlayer()
@@ -25,5 +28,10 @@ public class ServiceLocatorInstaller : MonoBehaviour
     private void BindService1()
     {
 
+    }
+
+    private void BindSubscribeService()
+    {
+        ServiceLocator.Instance.Register(_subscribeService);
     }
 }

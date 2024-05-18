@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - HideBox
   layers:
   - Default
   - TransparentFX
@@ -44,9 +45,6 @@ TagManager:
   - name: Background
     uniqueID: 2963412281
     locked: 0
-  - name: Player
-    uniqueID: 527998797
-    locked: 0
-  - name: Enemy
-    uniqueID: 667176477
+  - name: Level Object
+    uniqueID: 3550373793
     locked: 0

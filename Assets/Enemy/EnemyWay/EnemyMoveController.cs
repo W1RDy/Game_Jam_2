@@ -60,6 +60,7 @@ public class EnemyMoveController : ISubscribable
 
     private void ChangeMoveAction(bool isMoveOnWay)
     {
+        if (isMoveOnWay) _currentDestination = _way.GetClosestWayPointPosition(_enemy.transform.position);
         MoveAction = isMoveOnWay ? MoveOnWay : MoveToPlayer;
     }
 

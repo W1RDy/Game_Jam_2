@@ -44,9 +44,6 @@ TagManager:
   - name: Background
     uniqueID: 2963412281
     locked: 0
-  - name: Player
-    uniqueID: 527998797
-    locked: 0
-  - name: Enemy
-    uniqueID: 667176477
+  - name: Level object
+    uniqueID: 2121020849
     locked: 0

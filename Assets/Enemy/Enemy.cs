@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    private NavMeshAgent _agent;
 
     [SerializeField] private EnemyWay _way;
     [SerializeField] private Trigger _viewTrigger;
@@ -19,6 +21,13 @@ public class Enemy : MonoBehaviour
     {
         _controller = new EnemyMoveController(_way, this, _viewTrigger);
         _viewTriggerParent = _viewTrigger.transform.parent;
+
+        _agent = GetComponent<NavMeshAgent>();
+
+        _agent.updateRotation = false;
+        _agent.updateUpAxis = false;
+
+        _agent.speed = _speed;
     }
 
     private void Update()
@@ -29,7 +38,7 @@ public class Enemy : MonoBehaviour
     public void Move(Vector2 destination)
     {
         RotateTo(destination);
-        transform.position = Vector2.MoveTowards(transform.position, destination, _speed * Time.deltaTime);
+        _agent.SetDestination(destination);
     }
 
     private void RotateTo(Vector2 destination)

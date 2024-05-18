@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -37,17 +38,15 @@ public class Enemy : MonoBehaviour
 
     public void Move(Vector2 destination)
     {
-        RotateTo(destination);
         _agent.SetDestination(destination);
+        RotateTo(_agent.desiredVelocity.normalized);
     }
 
-    private void RotateTo(Vector2 destination)
+    private void RotateTo(Vector2 direction)
     {
-        if (destination != Vector2.zero)
+        if (direction != Vector2.zero)
         {
-            Vector2 directionToTarget = (destination - new Vector2(_viewTriggerParent.position.x, _viewTriggerParent.position.y)).normalized;
-
-            var rotationAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg + 180;
+            var rotationAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 180;
 
             _viewTriggerParent.rotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));
         }

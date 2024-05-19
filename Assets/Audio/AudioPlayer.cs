@@ -16,6 +16,8 @@ public class AudioPlayer : MonoBehaviour, IService
     private bool _isMusic = true;
     private bool _isSound = true;
 
+    private bool _isInited = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -31,7 +33,11 @@ public class AudioPlayer : MonoBehaviour, IService
 
     public void Init(List<AudioConfig> audioConfigs)
     {
-        _audioService = new AudioService(audioConfigs);
+        if (!_isInited)
+        {
+            _isInited = true;
+            _audioService = new AudioService(audioConfigs);
+        }
     }
 
     public void PlayMusic(string index)
@@ -49,7 +55,6 @@ public class AudioPlayer : MonoBehaviour, IService
 
     public void PlaySound(string index)
     {
-        Debug.Log(index);
         if (index == "Interaction" || index == "Walk") PlayLoopSound(index);
         else PlayOneShotSound(index);
     }

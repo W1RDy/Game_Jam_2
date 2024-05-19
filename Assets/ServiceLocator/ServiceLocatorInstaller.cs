@@ -12,6 +12,10 @@ public class ServiceLocatorInstaller : MonoBehaviour
     [SerializeField] private AudioService _audioService;
     [SerializeField] private AudioData _audioData;
 
+    [SerializeField] private GameStateController _gameStateController;
+
+    [SerializeField] private bool _isMenu;
+
     private void Awake()
     {
         Bind();
@@ -19,9 +23,18 @@ public class ServiceLocatorInstaller : MonoBehaviour
 
     private void Bind()
     {
-        BindInventory();
-        BindPlayer();
-        BindProgressBar();
+        BindDataService();
+        if (!_isMenu)
+        {
+            BindGameStateController();
+
+            BindInventory();
+
+            BindPlayer();
+
+            BindProgressBar();
+        }
+
         BindAudio();
         BindSubscribeService();
     }
@@ -50,5 +63,16 @@ public class ServiceLocatorInstaller : MonoBehaviour
     private void BindAudio()
     {
         AudioPlayer.Instance.Init(_audioData.AudioConfigs);
+    }
+
+    private void BindDataService()
+    {
+        var dataService = new DataService();
+        ServiceLocator.Instance.Register(dataService);
+    }
+
+    private void BindGameStateController()
+    {
+        ServiceLocator.Instance.Register(_gameStateController);
     }
 }

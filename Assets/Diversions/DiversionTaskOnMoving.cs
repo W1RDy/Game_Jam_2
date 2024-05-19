@@ -18,6 +18,6 @@ public class DiversionTaskOnMoving : DiversionTask, ISubscribable
 
     public void Unsubscribe()
     {
-        _trigger.IsEnter -= CompleteTask;
+        _trigger.ItemDelivered -= CompleteTask;
     }
 }

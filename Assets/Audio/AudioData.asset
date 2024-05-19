@@ -30,7 +30,7 @@ MonoBehaviour:
     _volume: 0.5
   - _index: Open
     _clip: {fileID: 8300000, guid: 34191d889b0763b409ee21bc9fc59b7e, type: 3}
-    _volume: 0
+    _volume: 0.5
   - _index: PickingUp
     _clip: {fileID: 8300000, guid: 81f1f64c30342044a894563dc1135a76, type: 3}
     _volume: 0.5

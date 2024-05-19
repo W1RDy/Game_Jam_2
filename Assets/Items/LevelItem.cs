@@ -26,6 +26,7 @@ public abstract class LevelItem : MonoBehaviour, IItem, ISubscribable
     public void Interact()
     {
         _progressBarController.ActivateProgressBar(_interactTime, _progressBarPos);
+        AudioPlayer.Instance.PlaySound("Interaction");
     }
 
     private void CompleteInteract()
@@ -36,6 +37,7 @@ public abstract class LevelItem : MonoBehaviour, IItem, ISubscribable
     public void InterruptInteract()
     {
         _progressBarController.Interrupt();
+        AudioPlayer.Instance.StopAudio("Interaction");
     }
 
     public void Subscribe()

@@ -56,11 +56,17 @@ public class Player : MonoBehaviour, IService
     public void ChangeVisible() {
         _isVisible = !_isVisible;
         _view.SetActive(_isVisible);
+
+        if (_isVisible) AudioPlayer.Instance.PlaySound("Close");
+        else AudioPlayer.Instance.PlaySound("Open");
     }
 
     private void Move() {
         var moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         _moveVelocity = moveInput.normalized * speed;
+
+        if (moveInput != Vector2.zero) AudioPlayer.Instance.PlaySound("Walk");
+        else AudioPlayer.Instance.StopAudio("Walk");
     }
     
 }

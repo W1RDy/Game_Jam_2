@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class LevelItem : MonoBehaviour, IItem, ISubscribable
 {
@@ -14,6 +15,10 @@ public abstract class LevelItem : MonoBehaviour, IItem, ISubscribable
 
     private ProgressBarController _progressBarController;
 
+    public event Action OnCompletedInteraction;
+
+    private bool _isInteracted;
+
     private void Awake()
     {
         var progressBar = ServiceLocator.Instance.Get<ProgressBar>();
@@ -25,6 +30,7 @@ public abstract class LevelItem : MonoBehaviour, IItem, ISubscribable
 
     public void Interact()
     {
+        if (_isInteracted) return;
         _progressBarController.ActivateProgressBar(_interactTime, _progressBarPos);
         AudioPlayer.Instance.PlaySound("Interaction");
     }
@@ -32,6 +38,8 @@ public abstract class LevelItem : MonoBehaviour, IItem, ISubscribable
     private void CompleteInteract()
     {
         Debug.Log("InteractCompleted");
+        OnCompletedInteraction?.Invoke();
+        _isInteracted = true;
     }
 
     public void InterruptInteract()

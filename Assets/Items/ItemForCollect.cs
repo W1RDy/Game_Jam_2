@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,10 @@ public abstract class ItemForCollect : MonoBehaviour, IItem
     private Player _player;
 
     private bool _isInInventory;
+    public bool IsInteracted {private get; set; }
+
+    public event Action ItemIsPicked;
+    public event Action ItemIsThrowed;
 
     private void Awake()
     {
@@ -21,6 +26,8 @@ public abstract class ItemForCollect : MonoBehaviour, IItem
 
     public void Interact()
     {
+        if (IsInteracted) return;
+
         if (_isInInventory) ThrowOutItem();
         else GetItem();
     }
@@ -33,6 +40,8 @@ public abstract class ItemForCollect : MonoBehaviour, IItem
         gameObject.SetActive(false);
 
         AudioPlayer.Instance.PlaySound("PickingUp");
+
+        ItemIsPicked?.Invoke();
     }
 
     private void ThrowOutItem()
@@ -44,5 +53,7 @@ public abstract class ItemForCollect : MonoBehaviour, IItem
         gameObject.SetActive(true);
 
         AudioPlayer.Instance.PlaySound("PickingUp");
+
+        ItemIsThrowed?.Invoke();
     }
 }

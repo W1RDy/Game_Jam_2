@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - HideBox
+  - ItemForCollect
   layers:
   - Default
   - TransparentFX

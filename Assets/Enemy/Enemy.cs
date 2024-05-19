@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
 
     public void Move(Vector2 destination)
     {
+        Debug.Log("Move");
         _agent.SetDestination(destination);
         RotateTo(_agent.desiredVelocity.normalized);
     }

@@ -9,11 +9,14 @@ public abstract class ItemForCollect : MonoBehaviour, IItem
 
     public ItemType ItemType => _itemType;
 
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Sprite _sprite;
+
     private Inventory _inventory;
     private Player _player;
 
     private bool _isInInventory;
-    public bool IsInteracted {private get; set; }
+    private bool _isInteracted;
 
     public event Action ItemIsPicked;
     public event Action ItemIsThrowed;
@@ -26,7 +29,7 @@ public abstract class ItemForCollect : MonoBehaviour, IItem
 
     public void Interact()
     {
-        if (IsInteracted) return;
+        if (_isInteracted) return;
 
         if (_isInInventory) ThrowOutItem();
         else GetItem();
@@ -55,5 +58,11 @@ public abstract class ItemForCollect : MonoBehaviour, IItem
         AudioPlayer.Instance.PlaySound("PickingUp");
 
         ItemIsThrowed?.Invoke();
+    }
+
+    public void ChangeItem()
+    {
+        _isInteracted = true;
+        if (_sprite != null) _spriteRenderer.sprite = _sprite;
     }
 }

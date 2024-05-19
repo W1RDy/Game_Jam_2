@@ -11,6 +11,8 @@ public abstract class LevelItem : MonoBehaviour, IItem, ISubscribable
     public ItemType ItemType => _itemType;
 
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Sprite _sprite;
+
     private Vector2 _progressBarPos;
 
     private ProgressBarController _progressBarController;
@@ -39,7 +41,7 @@ public abstract class LevelItem : MonoBehaviour, IItem, ISubscribable
     {
         Debug.Log("InteractCompleted");
         OnCompletedInteraction?.Invoke();
-        _isInteracted = true;
+        ChangeItem();
     }
 
     public void InterruptInteract()
@@ -56,5 +58,11 @@ public abstract class LevelItem : MonoBehaviour, IItem, ISubscribable
     public void Unsubscribe()
     {
         _progressBarController.OnCompleteProgressBar -= CompleteInteract;
+    }
+
+    public void ChangeItem()
+    {
+        _isInteracted = true;
+        if (_sprite != null) _spriteRenderer.sprite = _sprite;
     }
 }

@@ -20,7 +20,7 @@ public class TaskTrigger : Trigger
             if (collision.gameObject.GetComponent<ItemForCollect>() == _itemForCollect)
             {
                 ItemDelivered?.Invoke();
-                _itemForCollect.IsInteracted = true;
+                _itemForCollect.ChangeItem();
             }
         }
     }

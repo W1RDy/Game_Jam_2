@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemType: 0
+  _spriteRenderer: {fileID: 5004600887215421813}
+  _sprite: {fileID: 0}
 --- !u!58 &2222160717892744393
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -6,8 +6,15 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _settings;
-    [SerializeField] private bool _isInPauseMenu = false;
-    [SerializeField] private bool _isInGame = true;
+
+    private bool _isInPauseMenu = false;
+    private bool _isInGame = true;
+    private DataService _dataService;
+
+    private void Awake()
+    {
+        _dataService = ServiceLocator.Instance.Get<DataService>();
+    }
 
     public void Start() {
         print("start");
@@ -44,7 +51,8 @@ public class PauseMenu : MonoBehaviour
     }
     
     public void LoadMenu() {
-        //SceneManager.LoadScene(SceneManager.)
+        PauseOff();
+        SceneLoaderService.Instance.LoadScene(0);
         print("Load menu");
     }
 
@@ -52,6 +60,7 @@ public class PauseMenu : MonoBehaviour
         _pauseMenu.SetActive(false);
         _isInPauseMenu = false;
         _isInGame = true;
+        Time.timeScale = 1;
     }
 
     public void SettingOn() {

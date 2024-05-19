@@ -29,7 +29,7 @@ public class Player : MonoBehaviour, IService
         _animator.SetFloat("Speed", _moveVelocity.sqrMagnitude);
 
         if (_isVisible) {
-            Move();            
+            Move();                    
         }
 
         if (Input.GetKeyDown(KeyCode.Q)) {
@@ -49,8 +49,10 @@ public class Player : MonoBehaviour, IService
         }
     }
 
-    private void FixedUpdate() {        
-        _rb.MovePosition(_rb.position + _moveVelocity * Time.fixedDeltaTime);
+    private void FixedUpdate() {       
+        if (_isVisible) {
+            _rb.MovePosition(_rb.position + _moveVelocity * Time.fixedDeltaTime);                   
+        }         
     }
 
     public void ChangeVisible() {

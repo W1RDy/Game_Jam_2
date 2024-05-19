@@ -70,7 +70,7 @@ public class SceneLoaderService : MonoBehaviour
         {
             _screenSaverActivator.ActivateScreenSaver("Lose");
 
-            yield return new WaitUntil(() => _screenSaverActivator.IsScreenSaverActivate == true);
+            //yield return new WaitUntil(() => _screenSaverActivator.IsScreenSaverActivate == true);
             yield return new WaitForSeconds(2f);
 
             asyncOperation.allowSceneActivation = true;
@@ -118,11 +118,11 @@ public class SceneLoaderService : MonoBehaviour
         //yield return new WaitUntil(() => _screenSaverActivator.IsScreenSaverActivate == true);
         yield return new WaitForSeconds(_timeWaiting);
 
-        _screenSaverActivator.DeactivateScreenSaver("Afterwood");
+        _screenSaverActivator.DeactivateScreenSaver("Afterword");
 
         _screenSaverActivator.ActivateScreenSaver("Menu");
         //yield return new WaitUntil(() => _screenSaverActivator.IsScreenSaverActivate == true);
-        yield return new WaitForSeconds(_timeWaiting);
+        yield return new WaitForSeconds(2);
 
         asyncOperation.allowSceneActivation = true;
         _isLoaded = false;

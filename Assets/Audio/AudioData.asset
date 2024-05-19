@@ -37,3 +37,9 @@ MonoBehaviour:
   - _index: Walk
     _clip: {fileID: 8300000, guid: 43ad404af3989e34b87c5abf70cdad8e, type: 3}
     _volume: 0.5
+  - _index: Menu
+    _clip: {fileID: 8300000, guid: 615a9c9f70e5b664d85ef496b73c0e27, type: 3}
+    _volume: 0.25
+  - _index: Game
+    _clip: {fileID: 8300000, guid: 0bb10fae4b479b8458a1df1018061d8f, type: 3}
+    _volume: 0.25

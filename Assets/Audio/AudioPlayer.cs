@@ -9,6 +9,8 @@ public class AudioPlayer : MonoBehaviour, IService
     public static AudioPlayer Instance;
 
     private AudioSource _audioSource;
+    private AudioSource _loopSoundSource;
+
     private AudioService _audioService;
 
     private bool _isMusic = true;
@@ -20,6 +22,7 @@ public class AudioPlayer : MonoBehaviour, IService
         {
             Instance = this;
             _audioSource = GetComponent<AudioSource>();
+            _loopSoundSource = transform.GetChild(0).GetComponent<AudioSource>();
         }
         else Destroy(gameObject);
 
@@ -41,10 +44,17 @@ public class AudioPlayer : MonoBehaviour, IService
             _audioSource.volume = audioClip.Volume;
             _audioSource.clip = audioClip.Clip;
         }
-        if (_isMusic) _audioSource.Play();
+        if (_isMusic && !_audioSource.isPlaying) _audioSource.Play();
     }
 
     public void PlaySound(string index)
+    {
+        Debug.Log(index);
+        if (index == "Interaction" || index == "Walk") PlayLoopSound(index);
+        else PlayOneShotSound(index);
+    }
+
+    public void PlayOneShotSound(string index)
     {
         var audioClip = _audioService.GetAudio(index);
         if (_isSound)
@@ -53,11 +63,30 @@ public class AudioPlayer : MonoBehaviour, IService
         }
     }
 
-    public void StopAudio()
+    public void PlayLoopSound(string index)
     {
-        if (_audioSource.clip != null || _audioSource.isPlaying)
+        var audioClip = _audioService.GetAudio(index);
+        if (_loopSoundSource.clip == null || audioClip.Clip != _loopSoundSource.clip)
+        {
+            if (_loopSoundSource.isPlaying) _loopSoundSource.Stop();
+
+            _loopSoundSource.volume = audioClip.Volume;
+            _loopSoundSource.clip = audioClip.Clip;
+        }
+        if (_isSound && !_loopSoundSource.isPlaying) _loopSoundSource.Play();
+    }
+
+    public void StopAudio(string index)
+    {
+        var audioClip = _audioService.GetAudio(index);
+        if (_audioSource.clip != null && _audioSource.clip == audioClip.Clip && _audioSource.isPlaying )
         {
             _audioSource.Pause();
+        }
+
+        if (_loopSoundSource.clip != null && _loopSoundSource.clip == audioClip.Clip && _loopSoundSource.isPlaying)
+        {
+            _loopSoundSource.Stop();
         }
     }
 }

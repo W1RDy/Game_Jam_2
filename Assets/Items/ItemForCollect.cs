@@ -31,6 +31,8 @@ public abstract class ItemForCollect : MonoBehaviour, IItem
 
         _isInInventory = true;
         gameObject.SetActive(false);
+
+        AudioPlayer.Instance.PlaySound("PickingUp");
     }
 
     private void ThrowOutItem()
@@ -40,5 +42,7 @@ public abstract class ItemForCollect : MonoBehaviour, IItem
         _isInInventory = false;
         transform.position = _player.transform.position;
         gameObject.SetActive(true);
+
+        AudioPlayer.Instance.PlaySound("PickingUp");
     }
 }

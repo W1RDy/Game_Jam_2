@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5088735737989293998}
   m_Layer: 0
-  m_Name: Borders
+  m_Name: Borders3level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

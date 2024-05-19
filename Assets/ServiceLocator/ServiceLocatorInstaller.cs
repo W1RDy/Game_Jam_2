@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class ServiceLocatorInstaller : MonoBehaviour
     [SerializeField] private AudioData _audioData;
 
     [SerializeField] private GameStateController _gameStateController;
+    [SerializeField] private DiversionCounter _diversionCounter;
 
     [SerializeField] private bool _isMenu;
 
@@ -33,10 +35,16 @@ public class ServiceLocatorInstaller : MonoBehaviour
             BindPlayer();
 
             BindProgressBar();
+            BindDiversionCounter();
         }
 
         BindAudio();
         BindSubscribeService();
+    }
+
+    private void BindDiversionCounter()
+    {
+        ServiceLocator.Instance.Register(_diversionCounter);
     }
 
     private void BindPlayer()

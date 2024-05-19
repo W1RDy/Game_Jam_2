@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     private Transform _viewTriggerParent;
 
     private EnemyMoveController _controller;
+    private GameStateController _gameStateController;
 
     private void Awake()
     {
@@ -55,6 +56,14 @@ public class Enemy : MonoBehaviour
             var rotationAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 180;
 
             _viewTriggerParent.rotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            _gameStateController.FailLevel();
         }
     }
 }

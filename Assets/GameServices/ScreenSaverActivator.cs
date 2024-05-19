@@ -1,51 +1,64 @@
-using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using System;
-using TMPro;
+using System.Collections.Generic;
 
-public class ScreenSaverActivator : MonoBehaviour
+public class ScreenSaverActivator : MonoBehaviour, ISubscribable
 {
-    [SerializeField] private Image _image;
-    [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private List<ScreenSaver> _screenSavers;
 
-    [SerializeField] private FadeTextAnimation _appearTextAnimation;
-    [SerializeField] private FadeImageAnimation _appearImageAnimation;
-
-    [SerializeField] private FadeImageAnimation _disappearImageAnimation;
-    [SerializeField] private FadeTextAnimation _disappearTextAnimation;
-
-    public event Action ScreenSaverClosed;
-    public event Action ScreenSaverOpened;
+    public bool IsScreenSaverActivate { get; private set; }
 
     private void Awake()
     {
-        _appearTextAnimation.SetParameters(_text);
-        _appearImageAnimation.SetParameters(_image);
-
-        _disappearTextAnimation.SetParameters(_text);
-        _disappearImageAnimation.SetParameters(_image);
+        new SubscribeHandler(Subscribe, Unsubscribe);
     }
 
-    public void ActivateScreenSaver()
+    public void ActivateScreenSaver(string index)
     {
-        _appearTextAnimation.Play();
-        _appearImageAnimation.Play(OpenScreenSaverDelegate);
+        var screenSaver = GetScreenSaver(index);
+        screenSaver.ActivateScreenSaver();
     }
 
-    public void DeactivateScreenSaver()
+    public void DeactivateScreenSaver(string index)
     {
-        _disappearTextAnimation.Play();
-        _disappearImageAnimation.Play(CloseScreenSaverDelegate);
+        var screenSaver = GetScreenSaver(index);
+        screenSaver.DeactivateScreenSaver();
     }
 
-    private void CloseScreenSaverDelegate()
+    private ScreenSaver GetScreenSaver(string index)
     {
-        ScreenSaverClosed?.Invoke();
+        foreach (var screenSaver in _screenSavers)
+        {
+            if (screenSaver.Index == index) return screenSaver;
+        }
+        return null;
     }
 
-    private void OpenScreenSaverDelegate()
+    private void OpenedScreenSaverDelegate()
     {
-        ScreenSaverOpened?.Invoke();
+        IsScreenSaverActivate = true;
+    }
+
+    private void ClosedScreenSaverDelegate()
+    {
+        IsScreenSaverActivate = false;
+    }
+
+    public void Subscribe()
+    {
+        foreach (var screenSaver in _screenSavers)
+        {
+            screenSaver.ScreenSaverOpened += OpenedScreenSaverDelegate;
+            screenSaver.ScreenSaverClosed += ClosedScreenSaverDelegate;
+        }
+    }
+
+    public void Unsubscribe()
+    {
+        foreach (var screenSaver in _screenSavers)
+        {
+            screenSaver.ScreenSaverOpened -= OpenedScreenSaverDelegate;
+            screenSaver.ScreenSaverClosed -= ClosedScreenSaverDelegate;
+        }
     }
 }

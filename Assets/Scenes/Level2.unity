@@ -4228,6 +4228,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4567514273873195097, guid: 8fc378c7ababd134995acb76e7b74357, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5889053
+      objectReference: {fileID: 0}
+    - target: {fileID: 4567514273873195097, guid: 8fc378c7ababd134995acb76e7b74357, type: 3}
+      propertyPath: m_Offset.y
+      value: -10.012819
+      objectReference: {fileID: 0}
     - target: {fileID: 5878421716168231734, guid: 8fc378c7ababd134995acb76e7b74357, type: 3}
       propertyPath: m_Name
       value: Borders2level

@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour
         _agent.updateUpAxis = false;
 
         _agent.speed = _speed;
+
+        _gameStateController = ServiceLocator.Instance.Get<GameStateController>();
     }
 
     private void Update()

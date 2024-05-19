@@ -71,7 +71,7 @@ public class SceneLoaderService : MonoBehaviour
             _screenSaverActivator.ActivateScreenSaver("Lose");
 
             yield return new WaitUntil(() => _screenSaverActivator.IsScreenSaverActivate == true);
-            yield return new WaitForSeconds(_timeWaiting);
+            yield return new WaitForSeconds(2f);
 
             asyncOperation.allowSceneActivation = true;
             _isLoaded = false;

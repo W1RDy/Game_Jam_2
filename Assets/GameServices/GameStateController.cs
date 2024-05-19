@@ -25,6 +25,7 @@ public class GameStateController : MonoBehaviour, IService
     public void FailLevel()
     {
         OnLevelFailed?.Invoke();
+        SceneLoaderService.Instance.ReloadScene();
     }
 
     public void CompleteLevel()

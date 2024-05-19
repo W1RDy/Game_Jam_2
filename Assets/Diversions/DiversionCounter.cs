@@ -20,7 +20,10 @@ public class DiversionCounter : MonoBehaviour, IService
     {
         _diversionsCount++;
         SetDiversions(_diversionsCount);
-        if (_diversionsCount >= _maxDiversionCount) _gameStateController.CompleteLevel();
+        if (_diversionsCount >= _maxDiversionCount)
+        {
+            _gameStateController.CompleteLevel();
+        }
     }
 
     private void SetDiversions(int diversionCount)

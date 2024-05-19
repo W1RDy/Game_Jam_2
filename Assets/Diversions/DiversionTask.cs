@@ -12,6 +12,5 @@ public abstract class DiversionTask : MonoBehaviour
     public virtual void CompleteTask()
     {
         _mission.CompleteTask();
-        Debug.Log("Complete");
     }
 }

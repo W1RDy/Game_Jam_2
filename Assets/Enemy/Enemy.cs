@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private EnemyWay _way;
     [SerializeField] private Trigger _viewTrigger;
+    [SerializeField] private Animator _animator;
     private Transform _viewTriggerParent;
 
     private EnemyMoveController _controller;
@@ -34,6 +35,10 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         _controller.Update();
+
+        _animator.SetFloat("Horizontal", _agent.desiredVelocity.x);
+        _animator.SetFloat("Vertical", _agent.desiredVelocity.y);
+        _animator.SetFloat("Speed", _agent.desiredVelocity.sqrMagnitude);
     }
 
     public void Move(Vector2 destination)

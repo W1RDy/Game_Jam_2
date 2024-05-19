@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isStatic: 1
-  _offset: 0
+  _offset: -0.25
 --- !u!1 &6312535719271925271
 GameObject:
   m_ObjectHideFlags: 0

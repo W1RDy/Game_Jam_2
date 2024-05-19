@@ -7,8 +7,6 @@ public class DiversionMission : MonoBehaviour
     [SerializeField] private List<DiversionTask> _tasks;
     protected DiversionCounter _diversionCounter;
 
-    private int _completedTasks;
-
     private void Awake()
     {
         _diversionCounter = ServiceLocator.Instance.Get<DiversionCounter>();
@@ -21,7 +19,6 @@ public class DiversionMission : MonoBehaviour
 
     public void CompleteTask()
     {
-        _completedTasks++;
-        if (_completedTasks >= _tasks.Count) _diversionCounter.AddDiversion();
+        _diversionCounter.AddDiversion();
     }
 }

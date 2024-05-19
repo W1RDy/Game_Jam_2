@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _subscribeService: {fileID: 0}
+  _progressBar: {fileID: 0}
+  _audioData: {fileID: 0}

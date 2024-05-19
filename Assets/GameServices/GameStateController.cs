@@ -12,6 +12,11 @@ public class GameStateController : MonoBehaviour, IService
 
     private DataService _dataService;
 
+    private void Awake()
+    {
+        _dataService = ServiceLocator.Instance.Get<DataService>();
+    }
+
     private void Start()
     {
         OnLevelStarted?.Invoke();
@@ -26,5 +31,6 @@ public class GameStateController : MonoBehaviour, IService
     {
         OnLevelCompleted?.Invoke();
         _dataService.SaveData(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneLoaderService.Instance.LoadNextScene();
     }
 }

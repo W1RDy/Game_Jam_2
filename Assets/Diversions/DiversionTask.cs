@@ -12,6 +12,7 @@ public abstract class DiversionTask : MonoBehaviour
     public virtual void CompleteTask()
     {
         Debug.Log("Complete");
-        _mission.CompleteTask();
+        if (transform.parent.GetComponent<CompositeTask>() is CompositeTask compositeTask) compositeTask.CompleteTask();
+        else _mission.CompleteTask();
     }
 }

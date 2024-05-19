@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+    private GameStateController _gameStateController;
+
+    private void Awake()
+    {
+        _gameStateController = ServiceLocator.Instance.Get<GameStateController>();
+    }
+
     private void Start()
     {
-        SceneLoaderService.Instance.LoadScene(1);
+        _gameStateController.CompleteLevel();
     }
 }

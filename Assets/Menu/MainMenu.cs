@@ -11,6 +11,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _authors;
     private bool _isInMainMenu;
 
+    private DataService _dataService;
+
+    private void Awake()
+    {
+        _dataService = ServiceLocator.Instance.Get<DataService>();
+    }
+
     public void Start() {
         _authors.SetActive(false);
         _settings.SetActive(false);
@@ -27,12 +34,14 @@ public class MainMenu : MonoBehaviour
     }
     
     public void NewGame() {
-        //SceneManager.LoadScene(SceneManager.)
+        _dataService.ResetData();
+        SceneLoaderService.Instance.LoadScene(1);
         print("Game start");
     }
 
     public void LoadGame() {
-        //SceneManager.LoadScene(SceneManager.)
+        var levelIndex = _dataService.LevelIndex;
+        SceneLoaderService.Instance.LoadScene(levelIndex);
         print("Game load");
     }
 
